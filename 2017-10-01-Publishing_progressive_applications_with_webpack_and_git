@@ -1,0 +1,83 @@
+---
+title: Publishing progressive applications with webpack and git
+Description: Tutorial Publishing progressive applications with webpack and git
+published: true
+categories:
+    - articles
+tags:
+    - pwa
+    - development
+    - frontend
+---
+# Publishing progressive applications with webpack and git
+
+Git based workflows for progressive web application deployment is a powerful tool when combined with heroku, github pages, travis-ci, webpack, and npm.
+
+## Tools and Stack Requirements
+ - vim-ide (neovim)
+ - git
+ - npm
+ - webpack
+ - bable
+ - mocha
+ - html-webpack-plugin
+ - node-bumper
+ - mdl
+
+
+## Release channel
+
+A less painful solution:
+
+Checkout your branch, where your build-source is located (maybe src, or master)
+(Optional: Add _site to your .gitconfig, so it get's ignored, if not already done)
+Remove all content of the _site directory:
+
+$ rm -r _site/*
+Clone your repo's gh-pages branch into the _site directory:
+
+$ git clone -b gh-pages `git config remote.origin.url` _site
+Final steps: Just let jekyll build, do commit & push:
+
+$ jekyll build,
+
+cd into _site:
+
+$ cd _site,
+
+target all files for commit:
+
+$ git add -A,
+
+commit them:
+
+git commit -am 'Yeah. Built from subdir'
+
+and push your site to GitHub-Pages:
+
+git push.
+
+## Framework Pipeline
+
+### Frontend via github pages
+   * index.html - man application and google cast sender
+   * reciever.html - google cast reciever
+   * docs/* - static html with index at 
+
+### Backend via heroku
+   * js code for horizon 
+   * rethinkdb deployed by buildpack
+   
+### Building
+   * cloud9 ide for development environment
+   * git push to repo master triggers npm build in travisci
+   * travisci runs webpack and unit tests
+   * travisci then on success does version bump and commits to github
+   * travisci then checkouts the dest folder into gh-pages branch and pushes to github
+   * travisci deploys to heroku via on: conditional: tags...
+   
+## Extra Reading
+* [Content Auditing to help SEO and UX](https://moz.com/blog/content-audit)
+* [Deploy Using Travis-CI And Github Webhook](https://github.com/lcxfs1991/blog/issues/19)
+* [Horizon, RethinkDB and React tutorial](http://julian.io/new-horizons-with-horizon-rethinkdb-and-react/)
+* [Static Progressive Web Apps and Service Workers](https://medium.com/@dvidsilva/jekyll-on-github-pages-and-service-workers-progressive-web-apps-and-offline-mode-for-your-blog-b1cf9e87a6d1)
