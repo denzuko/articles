@@ -61,6 +61,8 @@ What we have here is an advance rule templating setup that takes advantage of an
 
 From here it is easy to [setup a bastlion host](https://10mi2.wordpress.com/2015/01/14/using-ssh-through-a-bastion-host-transparently/) for ansible to transparently connect to the target and hide your hosts behind a [private tor net](https://www.evernote.com/shard/s508/sh/05251db3-0a05-4ba0-b3c3-03ee0e3b4e2b/aa9a33fd453340e6cc2a87cecc96ca30).
 
+For the gui minded, look into [sshstorm](https://github.com/emre/storm) and [AIMS](https://github.com/denzuko/aims/) for dynamic ansible inventory management.
+
 ## Download
 
 Code for this article is availalbe at [gist://denzuko/7147846515c4293253bb](https://gist.github.com/denzuko/7147846515c4293253bb/archive/7d8a9c14f2f547d6d192255b6db66e6af5fd28a8.zip).
